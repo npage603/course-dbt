@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+
+  - name: postgres
+    schema: public
+    database: raw
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    # freshness: # this is where we define freshness thresholds
+    #   warn_after: {count: 24, period: hour}
+    #   error_after: {count: 48, period: hour}
+
+    tables:
+      - name: orders 
+        loaded_at_field: created_at
+        description: >
+          Contains orders
+      - name: order_items 
+        loaded_at_field: created_at
+        description: >
+          Contains order_items
+      - name: users 
+        loaded_at_field: created_at
+        description: >
+          Contains users
+      - name: addresses 
+        loaded_at_field: created_at
+        description: >
+          Contains addresses
+      - name: events 
+        loaded_at_field: created_at
+        description: >
+          Contains events
+      - name: products 
+        loaded_at_field: created_at
+        description: >
+          Contains products
+      - name: promos 
+        loaded_at_field: created_at
+        description: >
+          Contains promos
