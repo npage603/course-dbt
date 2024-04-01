@@ -1,7 +1,6 @@
 version: 2
 
 sources:
-
   - name: postgres
     schema: public
     database: raw

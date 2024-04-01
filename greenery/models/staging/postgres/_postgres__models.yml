@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: stg_addresses
+    description: Staging table for addresses
+    columns:
+      - name: address_id
+        description: unique identifier for address
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_events
+    description: Staging table for events
+    columns:
+      - name: event_id
+        description: unique identifier for event
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_order_items
+    description: Staging table for order items
+
+  - name: stg_orders
+    description: Staging table for orders
+    columns:
+      - name: order_id
+        description: unique identifier for order
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_products
+    description: Staging table for products
+    columns:
+      - name: product_id
+        description: unique identifier for product
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_promos
+    description: Staging table for promos
+    columns:
+      - name: promo_id
+        description: unique identifier for promo
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_users
+    description: Staging table for users
+    columns:
+      - name: user_id
+        description: unique identifier for user
+        tests:
+          - not_null
+          - unique
+
+    

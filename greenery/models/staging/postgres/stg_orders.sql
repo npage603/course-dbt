@@ -4,18 +4,21 @@
   )
 }}
 
+with orders as (
+	select * from {{ source('postgres', 'orders') }}
+)
 SELECT 
-	ORDER_ID,
-	USER_ID,
-	PROMO_ID,
-	ADDRESS_ID,
-	CREATED_AT,
-	ORDER_COST,
-	SHIPPING_COST,
-	ORDER_TOTAL,
-	TRACKING_ID,
-	SHIPPING_SERVICE,
-	ESTIMATED_DELIVERY_AT,
-	DELIVERED_AT,
-	STATUS
-FROM {{ source('postgres', 'orders') }}
+	order_id,
+	user_id,
+	promo_id,
+	address_id,
+	created_at::timestampntz as order_created_at_utc,
+	order_cost,
+	shipping_cost,
+	order_total,
+	tracking_id,
+	shipping_service,
+	estimated_delivery_at::timestampntz as order_estimated_delivery_at_utc,
+	delivered_at::timestampntz as order_delivered_at_utc,
+	status as order_status
+FROM orders

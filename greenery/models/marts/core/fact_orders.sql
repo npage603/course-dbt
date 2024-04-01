@@ -1,18 +1,23 @@
+with order_items as (
+    select * from {{ ref('stg_order_items') }}
+),
+orders as (
+    select * from {{ ref('stg_orders') }}
+)
 select i.order_id
     , i.product_id
-    , i.quantity
+    , i.order_quantity
     , o.promo_id
     , o.user_id
-    , o.address_id
-    , o.created_at
+    , o.address_id as user_address_id
+    , o.order_created_at_utc
     , o.order_cost
     , o.shipping_cost
     , o.order_total
     , o.tracking_id
     , o.shipping_service
-    , o.estimated_delivery_at
-    , o.delivered_at
-    , o.status
-from DEV_DB.DBT_NICKPAGESIGMACOMPUTINGCOM.stg_order_items i
-left join DEV_DB.DBT_NICKPAGESIGMACOMPUTINGCOM.stg_orders o on o.order_id = i.order_id
-;
+    , o.order_estimated_delivery_at_utc
+    , o.order_delivered_at_utc
+    , o.order_status
+from order_items i
+left join orders o on o.order_id = i.order_id
