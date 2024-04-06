@@ -1,12 +1,12 @@
 
 with events as (
-    select * from {{ ref('stg_events') }}
+    select * from {{ ref('stg_postgres__events') }}
 ),
 users as (
-    select * from {{ ref('stg_users') }}
+    select * from {{ ref('stg_postgres__users') }}
 ),
 products as (
-    select * from {{ ref('stg_products') }}
+    select * from {{ ref('stg_postgres__products') }}
 )
 select e.product_id
     , date_trunc("day",e.event_created_at_utc) as event_day

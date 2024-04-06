@@ -1,8 +1,8 @@
 with order_items as (
-    select * from {{ ref('stg_order_items') }}
+    select * from {{ ref('stg_postgres__order_items') }}
 ),
 orders as (
-    select * from {{ ref('stg_orders') }}
+    select * from {{ ref('stg_postgres__orders') }}
 )
 select i.order_id
     , i.product_id

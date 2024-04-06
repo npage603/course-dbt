@@ -5,8 +5,8 @@ ideas: daily page views by product, daily orders by product,
 with events as (
     select * from {{ ref('stg_postgres__events') }}
 ), 
-users as (
-    select * from {{ ref('stg_postgres__users') }}
+order_items as (
+    select * from {{ ref('stg_postgres__order_items') }}
 ),
 products as (
     select * from {{ ref('stg_postgres__products') }}
@@ -14,16 +14,13 @@ products as (
 select e.event_id
     , e.session_id
     , e.user_id
-    , u.user_email
-    , e.page_url
+    , e.event_type
     , e.event_created_at_utc
-    , e.product_id
+    , e.order_id
+    , o.product_id
     , p.product_name
     , p.product_price
     , p.product_inventory
-    , e.order_id
 from events e
-left join users u on e.user_id = u.user_id
-left join products p on e.product_id = p.product_id
-where 1=1
-and e.event_type = 'page_view'
+left join order_items o on e.order_id = o.order_id
+left join products p on o.product_id = p.product_id

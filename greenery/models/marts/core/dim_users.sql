@@ -1,8 +1,8 @@
 with users as (
-    select * from {{ ref('stg_users') }}
+    select * from {{ ref('stg_postgres__users') }}
 ),
 addresses as (
-    select * from {{ ref('stg_addresses') }}
+    select * from {{ ref('stg_postgres__addresses') }}
 )
 select u.user_id
     , u.user_first_name

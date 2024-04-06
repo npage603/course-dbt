@@ -1,8 +1,3 @@
-{{
-  config(
-    materialized='table'
-  )
-}}
 
 SELECT
 	order_id,

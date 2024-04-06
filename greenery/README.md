@@ -177,3 +177,23 @@ where 1=1
 order by product_id
 ;
 ```
+------------------------------------------
+
+### WEEK 3 SHORT ANSWERS
+
+## Part 1: Create new models
+
+- What is our overall conversion rate?
+The overall conversion rate is 62.46%. To get this answer, I connected to `fact_user_sessions` in Sigma and created a summary using the function `CountDistinctIf([SESSION_ID], [CHECKOUT_COUNT] > 0) / CountDistinct([SESSION_ID])`.
+
+- What is our conversion rate by product?
+To get our conversion rate by product, I used the same model mentioned above, but in Sigma, I grouped the table on Product ID and then used the same calculation specified above at the product level. From there I sorted convrsion rate in descending and performed a lookup on the `dim_products` table to find the products with the top conversion rates. These top products were Fiddle Leaf Fig (89.29%), String of pearls (89.06%), and Monstera (87.76%).
+
+
+_Note: Conversion rate is defined as the # of unique sessions with a purchase event / total number of unique sessions. Conversion rate by product is defined as the # of unique sessions with a purchase event of that product / total number of unique sessions that viewed that product_
+
+- A question to think about: Why might certain products be converting at higher/lower rates than others? We don't actually have data to properly dig into this, but we can make some hypotheses.
+
+The thing that immediately comes to mind here is marketing effectiveness, brand recognition, etc
+
+## Part 2: Create macros

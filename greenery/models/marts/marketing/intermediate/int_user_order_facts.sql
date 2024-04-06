@@ -7,11 +7,11 @@ with order_details as (
         , shipping_cost
         , order_total
         , order_created_at_utc
-    from {{ ref('stg_orders') }}
+    from {{ ref('stg_postgres__orders') }}
 ),
 users as (
     select *
-    from {{ ref('stg_users') }}
+    from {{ ref('stg_postgres__users') }}
 )
 select o.user_id
     , u.user_name

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_addresses
+  - name: stg_postgres__addresses
     description: Staging table for addresses
     columns:
       - name: address_id
@@ -10,7 +10,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_events
+  - name: stg_postgres__events
     description: Staging table for events
     columns:
       - name: event_id
@@ -19,10 +19,10 @@ models:
           - not_null
           - unique
 
-  - name: stg_order_items
+  - name: stg_postgres__order_items
     description: Staging table for order items
 
-  - name: stg_orders
+  - name: stg_postgres__orders
     description: Staging table for orders
     columns:
       - name: order_id
@@ -31,7 +31,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_products
+  - name: stg_postgres__products
     description: Staging table for products
     columns:
       - name: product_id
@@ -40,7 +40,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_promos
+  - name: stg_postgres__promos
     description: Staging table for promos
     columns:
       - name: promo_id
@@ -49,7 +49,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_users
+  - name: stg_postgres__users
     description: Staging table for users
     columns:
       - name: user_id
