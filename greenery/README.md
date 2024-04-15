@@ -206,7 +206,7 @@ I created a post hook that grants usage/select to the "reporting" role. This is 
 
 ## Part 4: dbt Packages
 
-I added the dbt-labs/dbt_utils and calogica/dbt_expectations packages and installed them by running `dbt deps` once I specified these packages in my `packages.yml` file. One example of using these packages is that I used `get_column_values` in `int_user_session_details` to grab each unique event type that would then get dynamically used to count occurrences (as mentioned above).
+I added the dbt-labs/dbt_utils and calogica/dbt_expectations packages and installed them by running `dbt deps` once I specified these packages in my `packages.yml` file. One example of using these packages is that I used `get_column_values` in `int_user_session_details` to grab each unique event type that would then get dynamically used to count occurrences (as mentioned above). I also used `dbt_utils.accepted_range` on the `order_total` column of `stg_postgres__events` as a test (you can see this in my `_postgres__models.yml` file).
 
 ## Part 5: dbt docs
 
