@@ -1,0 +1,15 @@
+version: 2
+
+exposures:  
+  - name: Product Funnel Dashboard
+    description: >
+      Models that are critical to our product funnel dashboard
+    type: dashboard
+    maturity: high
+    url: https://app.sigmacomputing.com/corise-dbt/workbook/Product-Funnel-Dashboard-6v0bXK1hewBV7urPGoiKij
+    tags: ['product','marketing']
+    owner:
+      name: Nick Page
+      email: nick.page@sigmacomputing.com
+    depends_on:
+      - ref('fact_user_sessions')

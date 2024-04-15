@@ -224,3 +224,43 @@ I am getting to this part of the week 3 assigment a week behind schedule so it's
 ------------------------------------------
 
 ### WEEK 4 SHORT ANSWERS
+
+## Part 1: dbt snapshot
+
+As mentioned in my Week 3 assignment, I was delayed in running that command so my answer here is the same as Part 6 of the Week 3 assignment. The following products had inventory changes since I had last checked.
+    - Philodendron
+    - Bamboo
+    - ZZ Plant
+    - Monstera
+
+Based on the inventory changes, the products with the most fluctuations in inventory were ZZ Plant (dropped from 89 on 3/24 to 41 on 4/15) and String of Pearls (dropped from 58 on 3/24 to 10 on 4/1). We didn't have any items go completely out of stock in the last 3 weeks, but String of Pearls got all the way down to 10. 
+
+## Part 2: Modeling challenge
+
+Product funnel is defined with 3 levels for our dataset:
+- Sessions with any event of type page_view
+- Sessions with any event of type add_to_cart
+- Sessions with any event of type checkout
+
+Based on the above we can answer the below two questions.
+- How are our users moving through the product funnel?
+
+    Using a grouping on session ID in Sigma on `fact_user_sessions`, we can grab the values for the number of page views, add to carts, and checkouts. When collapsing at this grouping level, we can make a funnel chart as a child element of this grouped table. This visualization shows that there are 1871 page views, 986 add to carts,and 361 checkouts. This means that we are seeing a 52.7% conversion rate from page views to add to cart and a 36.61% conversion rate from add to cart to checkout.
+
+- Which steps in the funnel have largest drop off points?
+
+    Based on the analysis done in the previous question, we are seeing the steepest drop-off going from page views to add to carts.
+
+Finally, I used an exposure on my product analytics model (which is really just my `fact_user_sessions` model because grouping to aggregate in Sigma is straightforward) to represent that this is being used in downstream BI tools. This exposore is called `_marketing_exposures.yml`. As a bonus, I created a basic Sigma workbook (https://app.sigmacomputing.com/corise-dbt/workbook/Product-Funnel-Dashboard-6v0bXK1hewBV7urPGoiKij) to visualize this data as I have already described above.
+
+## Part 3: Reflection questions
+
+3A. dbt next steps for you
+
+If my organization were thinking about using dbt, I would pitch it as a crucial tool because of the flexibility it provides. BI tools and data models can get messy when teams rely on small data teams to write ad hoc SQL queries to run the business. dbt and analytics engineering in general make the process much more organized, reduce inefficiencies/redundancies, make it easier to iterate and serve to non-technical stakeholders, etc.
+
+As a matter of fact, my organization (Sigma) already uses dbt (thank you Jake!). In my role as a Solutions Engineer, I don't work in dbt but the models that our analytics engineering team creates make it super easy for me to do my job and access data that would be difficult at other organizations that don't use dbt.
+
+3B. Setting up for production / scheduled dbt run of your project
+
+This part of dbt (deployment) is an area I am less confident/interested in - but the image of all the steps in chronological order that Emily shared in the lecture would be the first place I would start to put these models to work!
