@@ -197,3 +197,14 @@ _Note: Conversion rate is defined as the # of unique sessions with a purchase ev
 The thing that immediately comes to mind here is marketing effectiveness, brand recognition, etc
 
 ## Part 2: Create macros
+
+I created a macro called `count_col_value_occurrences`. This macro dynamically counts all possible...
+
+## Part 3: Create grant post hook
+
+I created a post hook that grants ...
+
+## Part 4: dbt Packages
+
+I added the following packages and installed them by running dbt deps once I specified these packages in my packages.yml file. To use these packages,
+I used `get_column_values` ...

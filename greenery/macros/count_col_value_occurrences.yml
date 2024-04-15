@@ -1,0 +1,8 @@
+macros:
+  - name: count_col_value_occurrences
+    description: Aggregation function that counts the number of occurrences of a specified value in a specified column
+    arguments:
+      - name: col_name
+        description: the column that contains values we are counting
+      - name: col_value
+        description: the value to look for and count in a given column
