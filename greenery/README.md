@@ -198,13 +198,29 @@ The thing that immediately comes to mind here is marketing effectiveness, brand 
 
 ## Part 2: Create macros
 
-I created a macro called `count_col_value_occurrences`. This macro dynamically counts all possible...
+I created a macro called `count_col_value_occurrences`. This macro dynamically counts all possible occurrences of a given value within a given column. I specifically used this in `int_user_session_details` to dynamically create columns showing each event type count.
 
 ## Part 3: Create grant post hook
 
-I created a post hook that grants ...
+I created a post hook that grants usage/select to the "reporting" role. This is under the macros folder and called `grant.sql`. The post hook is specified in the dbt_project.yml file.
 
 ## Part 4: dbt Packages
 
-I added the following packages and installed them by running dbt deps once I specified these packages in my packages.yml file. To use these packages,
-I used `get_column_values` ...
+I added the dbt-labs/dbt_utils and calogica/dbt_expectations packages and installed them by running `dbt deps` once I specified these packages in my `packages.yml` file. One example of using these packages is that I used `get_column_values` in `int_user_session_details` to grab each unique event type that would then get dynamically used to count occurrences (as mentioned above).
+
+## Part 5: dbt docs
+
+I ran `dbt docs generate` and then `dbt docs serve --no-browser` to show how I simplified/improved my DAG from last week using macros and/or dbt packages. It does look cleaner and part of that is because I also removed models that were not being used (from the example/tutorial before the course).
+
+## Part 6: dbt snapshot
+
+I am getting to this part of the week 3 assigment a week behind schedule so it's possible the values have since changed again but after running `dbt snapshot`, I have found that the following products had inventory changes since I had last checked.
+    - Philodendron
+    - Bamboo
+    - ZZ Plant
+    - Monstera
+
+
+------------------------------------------
+
+### WEEK 4 SHORT ANSWERS
